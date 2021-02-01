@@ -136,34 +136,38 @@ class IntlPhoneField extends StatefulWidget {
   /// Color of the drop down arrow
   final Color dropDownArrowColor;
 
+  // cursor color
+  final Color cursorColor,
+
   TextInputAction textInputAction;
 
   IntlPhoneField(
       {this.initialCountryCode,
-      this.obscureText = false,
-      this.textAlign = TextAlign.left,
-      this.onTap,
-      this.readOnly = false,
-      this.initialValue,
-      this.keyboardType = TextInputType.number,
-      this.autoValidate = true,
-      this.controller,
-      this.focusNode,
-      this.decoration,
-      this.style,
-      this.onSubmitted,
-      this.validator,
-      this.onChanged,
-      this.onSaved,
-      this.showDropdownIcon = true,
-      this.dropdownDecoration = const BoxDecoration(),
-      this.inputFormatters,
-      this.enabled = true,
-      this.keyboardAppearance = Brightness.light,
-      this.searchText = 'Search by Country Name',
-      this.countryCodeTextColor,
-      this.dropDownArrowColor,
-      this.textInputAction});
+        this.obscureText = false,
+        this.textAlign = TextAlign.left,
+        this.onTap,
+        this.readOnly = false,
+        this.initialValue,
+        this.keyboardType = TextInputType.number,
+        this.autoValidate = true,
+        this.controller,
+        this.focusNode,
+        this.decoration,
+        this.style,
+        this.cursorColor,
+        this.onSubmitted,
+        this.validator,
+        this.onChanged,
+        this.onSaved,
+        this.showDropdownIcon = true,
+        this.dropdownDecoration = const BoxDecoration(),
+        this.inputFormatters,
+        this.enabled = true,
+        this.keyboardAppearance = Brightness.light,
+        this.searchText = 'Search by Country Name',
+        this.countryCodeTextColor,
+        this.dropDownArrowColor,
+        this.textInputAction});
 
   @override
   _IntlPhoneFieldState createState() => _IntlPhoneFieldState();
@@ -171,7 +175,7 @@ class IntlPhoneField extends StatefulWidget {
 
 class _IntlPhoneFieldState extends State<IntlPhoneField> {
   Map<String, String> _selectedCountry =
-      countries.firstWhere((item) => item['code'] == 'US');
+  countries.firstWhere((item) => item['code'] == 'US');
   List<Map<String, String>> filteredCountries = countries;
   FormFieldValidator<String> validator;
 
@@ -207,8 +211,8 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
                     setState(() {
                       filteredCountries = countries
                           .where((country) => country['name']
-                              .toLowerCase()
-                              .contains(value.toLowerCase()))
+                          .toLowerCase()
+                          .contains(value.toLowerCase()))
                           .toList();
                     });
                   },
@@ -273,6 +277,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
               if (widget.onSubmitted != null) widget.onSubmitted(s);
             },
             decoration: widget.decoration,
+            cursorColor: widget.cursorColor,
             style: widget.style,
             onSaved: (value) {
               if (widget.onSaved != null)
