@@ -137,7 +137,7 @@ class IntlPhoneField extends StatefulWidget {
   final Color dropDownArrowColor;
 
   // cursor color
-  final Color cursorColor,
+  final Color cursorColor;
 
   TextInputAction textInputAction;
 
